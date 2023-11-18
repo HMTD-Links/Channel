@@ -15,7 +15,7 @@ from config import BANNED_CHANNELS
     group=4,
 )
 async def channel_receive_handler(bot, broadcast):
-    if int(broadcast.chat.id) in Var.BANNED_CHANNELS:
+    if int(broadcast.chat.id) in Config.BANNED_CHANNELS:
         await bot.leave_chat(broadcast.chat.id)
         return
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔥 Uploaded By", url=f'https://telegram.me/Star_Moviess_Tamil')]])
