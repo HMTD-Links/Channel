@@ -3,7 +3,7 @@ logger = logging.getLogger(__name__)
 
 from pyrogram import Client, filters, enums
 from bot import Star_Moviess_Tamil
-from config import ADMINS, AUTH_USERS
+from config import ADMINS, AUTH_USERS, FORCE_MSG
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, CallbackQuery
 from translation import Translation
 from Plugins.defines import subscribed
@@ -99,7 +99,7 @@ async def not_joined(client: Client, message: Message):
         pass
 
     await message.reply(
-        text = FORCE_MSG.format(
+        text = config.FORCE_MSG.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
