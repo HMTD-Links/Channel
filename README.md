@@ -43,9 +43,9 @@ about - to Know About Me 😌
 movies - Get Movies Links 🔗
 stats - Total Users 📊
 settings - Change Bot Settings ⚙️
-ban_user - Ban This User 🚫
-unban_user - Unban a User 😁
-banned_users - Total Banned Users 🤕
+ban - Ban This User 🚫
+unban - Unban a User 😁
+banned - Total Banned Users 🤕
 broadcast - to Broadcast 💌 a Message to All Users
 ```
 
