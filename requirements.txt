@@ -6,6 +6,7 @@ datetime
 aiofiles
 uvloop
 motor
+telegraph==1.4.1
 # --------- For Database -------- #
 pymongo
 dnspython
