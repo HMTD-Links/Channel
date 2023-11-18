@@ -40,7 +40,6 @@ You can Deploy this Code any where you Want but we Provided Heroku, Koyeb and Ra
 start - Check if 😊 I'm Alive
 help - How to Use❓
 about - to Know About Me 😌
-movies - Get Movies Links 🔗
 stats - Total Users 📊
 settings - Change Bot Settings ⚙️
 ban - Ban This User 🚫
