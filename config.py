@@ -15,3 +15,4 @@ AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1391556668").spli
 BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", True))
 BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001296894100")).split()))
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1001589399161"))
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "<b>Hello {mention}\n\nYou need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>")
