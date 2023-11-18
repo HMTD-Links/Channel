@@ -21,7 +21,6 @@ import config
 from handlers.broadcast import broadcast
 from handlers.check_user import handle_user_status
 from handlers.database import Database
-from Plugins.start_filter import *
 LOG_CHANNEL = config.LOG_CHANNEL
 AUTH_USERS = config.AUTH_USERS
 DB_URL = config.DB_URL
@@ -65,7 +64,7 @@ async def _(bot, cmd):
         else:
             logging.info(f"New User :- Name :- {message.from_user.first_name} ID :- {message.from_user.id}")
 
-@Star_Moviess_Tamil.on_message(start_filter)
+@Star_Moviess_Tamil.on_message(filters.command("start") & filters.private & filters.incoming)
 async def start(client, message):
     reply_markup = InlineKeyboardMarkup(MAIN_MENU_BUTTONS)
     await message.reply_text(
@@ -76,8 +75,6 @@ async def start(client, message):
         disable_web_page_preview=True,
         quote=True
     )
-    raise StopPropagation
-
 
 ################################################################################################################################################################################################################################################
 # Help Command
@@ -122,42 +119,6 @@ async def about(client, message):
     reply_markup = InlineKeyboardMarkup(ABOUT_BUTTONS)
     await message.reply_text(
         text = Translation.ABOUT.format(
-                mention = message.from_user.mention
-            ),
-        reply_markup=reply_markup,
-        disable_web_page_preview=True,
-        quote=True
-    )
-
-################################################################################################################################################################################################################################################
-# Get Movies with Links 👇🏻
-
-MOVIES = "Translation.MOVIES"
-
-MOVIES_BUTTONS = [
-            [
-                InlineKeyboardButton('Tamil Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Tamil_Movies'),
-                InlineKeyboardButton('TV Shows', url='https://t.me/Star_Moviess_Tamil_Bot?start=TV_Shows')
-            ],
-            [
-                InlineKeyboardButton('Hollywood Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Hollywood_Movies'),
-                InlineKeyboardButton('Collection Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Collection_Movies')
-            ],
-            [
-                InlineKeyboardButton('Web Series', url='https://t.me/Star_Moviess_Tamil_Bot?start=Web_Series'),
-                InlineKeyboardButton('Cartoon Movies', url='https://t.me/Star_Moviess_Tamil_Bot?start=Cartoon_Movies')
-            ],
-            [
-                InlineKeyboardButton('📢 Update Channel', url='https://t.me/Star_Moviess_Tamil'),
-            ]
-        ]
-
-@Star_Moviess_Tamil.on_message(filters.command("movies") & filters.private & filters.incoming)
-async def movies(client, message):
-    text = Translation.MOVIES
-    reply_markup = InlineKeyboardMarkup(MOVIES_BUTTONS)
-    await message.reply_text(
-        text = Translation.MOVIES.format(
                 mention = message.from_user.mention
             ),
         reply_markup=reply_markup,
@@ -222,7 +183,7 @@ async def sts(c, m):
 ################################################################################################################################################################################################################################################
 # Ban The User
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("ban_user"))
+@Star_Moviess_Tamil.on_message(filters.private & filters.command("ban"))
 async def ban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -264,7 +225,7 @@ async def ban(c, m):
 ################################################################################################################################################################################################################################################
 # Unban User
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("unban_user"))
+@Star_Moviess_Tamil.on_message(filters.private & filters.command("unban"))
 async def unban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
@@ -301,7 +262,7 @@ async def unban(c, m):
 ################################################################################################################################################################################################################################################
 # Banned Users
 
-@Star_Moviess_Tamil.on_message(filters.private & filters.command("banned_users"))
+@Star_Moviess_Tamil.on_message(filters.private & filters.command("banned"))
 async def _banned_usrs(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
